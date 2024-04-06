@@ -29,3 +29,7 @@ body{
     transition: border-color .2s ease;
     cursor: pointer;
 }
+
+h1 {
+    text-align: center;
+}
