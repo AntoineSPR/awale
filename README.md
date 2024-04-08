@@ -1,6 +1,8 @@
 # awale
 (En cours) Recréation virtuelle du jeu africain Awalé.
 
+
+
 Mécaniques de base du jeu implémentées : 
 > Affiche les possibilités en surbrillance au survol des 'trous' de la planche de jeu.
 > 
@@ -10,9 +12,13 @@ Mécaniques de base du jeu implémentées :
 > 
 > En cas de double tour du plateau, la bonne cible est prise en compte.
 
+
+
 A faire : Implémenter la possibilité rare de faire un triple tour, faire sauter la case initiale en cas de double/triple tour, et ajouter un mode deux joueurs et/ou une IA adverse, ainsi que les conditions de victoire.
 
+/////////////////////////////////////////////////////////////
 /////////////////////// Règles du jeu ///////////////////////
+/////////////////////////////////////////////////////////////
 
 L'awalé se joue sur un plateau composé de 2 rangées de 6 trous chacune; chaque trou recevant 4 graines au début du jeu.
 
