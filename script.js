@@ -4,6 +4,7 @@ let nord = [11, 10, 9, 8, 7, 6];
 let sud = [0, 1, 2, 3, 4, 5];
 let score = 0;
 let affichageScore = document.getElementById("score");
+let isRunning = false;
 
 for (let i = 11; i >= 0; i--) {
     trou[i] = document.getElementById(i.toString());  // Lie les variables à chaque div du document
@@ -14,12 +15,12 @@ for (let i = 11; i >= 0; i--) {
      */
 
     trou[i].addEventListener("mouseover", () => {       // Fonction hover pour afficher les possibilités
+        if (isRunning) {return;}
         Object.values(trou).forEach(element => {        // Réinitialise les bordures avant tout changement
             element.style.borderColor = "initial";
         });
 
         let cible = (i + n[i]) % 12;
-
         if (i < 6) {                         // Ne fonctionne que sur la barre du bas
             if ((i + n[i]) >= 6) {                     // Mouvement valide seulement s'il dépasse la barre du bas
                 if (n[i] >= 12) { cible++; }          // Saute le trou initial en cas de double tour
@@ -46,6 +47,7 @@ for (let i = 11; i >= 0; i--) {
      */
 
     trou[i].onclick = () => {                       // Fonction lancée au clic
+        if (isRunning) { return; }              // Empêche de lancer 2 tours en même temps
         let cible = (i + n[i]) % 12;
         if (n[i] >= 12) { cible++; }
         let j = i;                          // Variable arbitraire qui prend la place de i pour s'incrémenter jusqu'à 11
@@ -60,10 +62,11 @@ for (let i = 11; i >= 0; i--) {
                 cible--;
             }
 
-            setTimeout(()=>{trou[cible].classList.remove("highlighted");}, 300); 
+            setTimeout(() => { trou[cible].classList.remove("highlighted"); }, 300);
 
         }
         let tourDeJeu = () => {                     // Lancement de la mécanique de jeu si mouvement valide
+            isRunning = true;
             if (trou[i].style.borderColor !== "red") { // Utilisation de la couleur pour éviter les conflits
                 if (i !== j) {            // Icrémente de 1 chaque montant, sauf le trou initial
                     n[j]++;
@@ -83,6 +86,7 @@ for (let i = 11; i >= 0; i--) {
                         j = (j + 1) % 12;           // Prend en compte les valeurs de cible qui repassent par zéro
                     } else if (j === cible) {       // Une fois la cible atteinte, lance la fonction de prise de points
                         priseDePoints();
+                        isRunning = false;
                         n[i] = 0;
                         return;
                     };
@@ -92,6 +96,7 @@ for (let i = 11; i >= 0; i--) {
                         k++;
                     } else if (j === cible && k >= 12) {      // La cible peut être atteinte une fois qu'un premier tour a été effectué
                         priseDePoints();
+                        isRunning = false;
                         n[i] = 0;
                         return;
                     };
@@ -101,6 +106,7 @@ for (let i = 11; i >= 0; i--) {
                         k++;
                     } else if (j === cible && k >= 24) {
                         priseDePoints();
+                        isRunning = false;
                         n[i] = 0;
                         return;
                     };
