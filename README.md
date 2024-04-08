@@ -10,4 +10,4 @@ Mécaniques de base du jeu implémentées :
 > 
 > En cas de double tour du plateau, la bonne cible est prise en compte
 
-A faire : Implémenter la possibilité rare de faire un triple tour, et ajouter un mode deux joueurs et/ou une IA adverse.
+A faire : Implémenter la possibilité rare de faire un triple tour, et ajouter un mode deux joueurs et/ou une IA adverse, ainsi que les conditions de victoire.
