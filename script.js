@@ -1,5 +1,5 @@
 let trou = {};
-let n = [2, 4, 4, 4, 4, 13, 2, 2, 2, 4, 4, 4];
+let n = [2, 4, 4, 4, 4, 25, 2, 2, 2, 4, 4, 4];
 let nord = [11, 10, 9, 8, 7, 6];
 let sud = [0, 1, 2, 3, 4, 5];
 let score = 0;
@@ -50,7 +50,7 @@ for (let i = 11; i >= 0; i--) {
         if (n[i] >= 12) { cible++; }
         let j = i;                          // Variable arbitraire qui prend la place de i pour s'incrémenter jusqu'à 11
         let k = j;                          // Variable arbitraire qui s'incrémente en parallèle de j, sans limite
-        let priseDePoints = () => {             // Fonction d'implémentation du score et vidage des trous pris
+        let priseDePoints = () => {             // Fonction d'implémentation du score et vidage des trous pris  
             while (cible >= 6 && (n[cible] === 2 || n[cible] === 3)) {    // Vérifie que les conditions sont remplies pour s'éxécuter
                 score += n[cible];
                 n[cible] = 0;
@@ -59,6 +59,9 @@ for (let i = 11; i >= 0; i--) {
                 affichageScore.innerText = score;
                 cible--;
             }
+
+            setTimeout(()=>{trou[cible].classList.remove("highlighted");}, 300); 
+
         }
         let tourDeJeu = () => {                     // Lancement de la mécanique de jeu si mouvement valide
             if (trou[i].style.borderColor !== "red") { // Utilisation de la couleur pour éviter les conflits
@@ -66,9 +69,15 @@ for (let i = 11; i >= 0; i--) {
                     n[j]++;
                 }
                 trou[j].innerText = n[j];
-                trou[j].style.opacity = "100%";         // Dégrise les trous remplis
+                trou[j].classList.remove("empty");         // Dégrise les trous remplis
+                if (j !== i) {
+                    trou[j].classList.add("highlighted");
+                }
+                if (j !== 0) {
+                    trou[(j - 1)].classList.remove("highlighted");
+                } else { trou[11].classList.remove("highlighted"); }
                 trou[i].innerText = 0;       // Affiche un trou d'origine vide dès le début
-                trou[i].style.opacity = "70%";
+                trou[i].classList.add("empty");
                 if (n[i] < 12) {           // Vérifie qu'il n'y a qu'un seul tour de plateau à effectuer
                     if (j !== cible) {  // Incrémente tant que la cible n'est pas atteinte
                         j = (j + 1) % 12;           // Prend en compte les valeurs de cible qui repassent par zéro
@@ -77,11 +86,20 @@ for (let i = 11; i >= 0; i--) {
                         n[i] = 0;
                         return;
                     };
-                } else {                   // En cas de second tour de plateau, permet d'éxecuter la progression jusqu'au bout
+                } else if (n[i] < 24) {                   // En cas de second tour de plateau, permet d'éxecuter la progression jusqu'au bout
                     if (j !== cible || (j === cible && k < 12)) {  // Incrémente tant que la véritable cible n'est pas atteinte
                         j = (j + 1) % 12;
                         k++;
                     } else if (j === cible && k >= 12) {      // La cible peut être atteinte une fois qu'un premier tour a été effectué
+                        priseDePoints();
+                        n[i] = 0;
+                        return;
+                    };
+                } else {                                // En cas de troisième tour
+                    if (j !== cible || (j === cible && k < 24)) {
+                        j = (j + 1) % 12;
+                        k++;
+                    } else if (j === cible && k >= 24) {
                         priseDePoints();
                         n[i] = 0;
                         return;

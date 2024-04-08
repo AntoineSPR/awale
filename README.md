@@ -10,11 +10,11 @@ Mécaniques de base du jeu implémentées :
 > 
 > Si les conditions sont remplies, la cible (et le cas échéant les trous précédents) est vidée et le score incrémenté.
 > 
-> En cas de double tour du plateau, la bonne cible est prise en compte et le trou d'origine est sauté
+> En cas de double ou triple tour du plateau, la bonne cible est prise en compte et le trou d'origine est sauté
 
 
 
-En cours : Implémenter la possibilité rare de faire un triple tour, empêcher de jouer 2 tours en même temps, et ajouter un mode deux joueurs et/ou une IA adverse, ainsi que les conditions de victoire.
+En cours : Empêcher de jouer 2 tours en même temps, et ajouter un mode deux joueurs et/ou une IA adverse, ainsi que les conditions de victoire.
 
 /////////////////////// Règles du jeu ///////////////////////
 
