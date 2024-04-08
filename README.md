@@ -14,7 +14,7 @@ Mécaniques de base du jeu implémentées :
 
 
 
-En cours : Empêcher de jouer 2 tours en même temps, et ajouter un mode deux joueurs et/ou une IA adverse, ainsi que les conditions de victoire.
+En cours : Ajouter un mode deux joueurs et/ou une IA adverse, ainsi que les conditions de victoire.
 
 /////////////////////// Règles du jeu ///////////////////////
 
