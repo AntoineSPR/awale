@@ -1,6 +1,8 @@
 # awale
 (En cours) Recréation virtuelle du jeu africain Awalé.
 
+https://antoinespr.github.io/awale/
+
 
 
 Mécaniques de base du jeu implémentées : 
