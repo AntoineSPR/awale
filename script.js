@@ -70,8 +70,8 @@ for (let i = 11; i >= 0; i--) {
             }, 300);
         }
         let tourDeJeu = () => {                     // Lancement de la mécanique de jeu si mouvement valide
-            tourEnCours = true;
-            if (trou[i].style.borderColor !== "red" && sud.includes(i)) { // Utilisation de la couleur pour éviter les conflits
+            if (cible > 5 && i < 6) { 
+                tourEnCours = true;
                 trou[cible].style.borderColor = "yellow";
                 if (i !== j) {            // Icrémente de 1 chaque montant, sauf le trou initial
                     n[j]++;
