@@ -1,5 +1,5 @@
 # awale
-(En cours) Recréation virtuelle du jeu africain Awalé.
+(En cours) Reproduction virtuelle du jeu africain Awalé.
 
 https://antoinespr.github.io/awale/
 
